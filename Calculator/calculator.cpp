@@ -1,4 +1,6 @@
 #include <stdio.h>
+// need fmod to get remainder of double division
+#include <math.h>
 
 // Calculator
 int main()
@@ -34,8 +36,8 @@ int main()
         }
         break;
     case '%':
-    // Modulus needs to use ints rather than doubles
-        printf("%.2lf %% %.2lf = %.2lf", num1, num2, (int)num1 % (int)num2);
+    // fmod() needed so % can work with doubles
+        printf("%.2lf %% %.2lf = %.2lf", num1, num2, fmod(num1, num2));
         break;
     }
 
