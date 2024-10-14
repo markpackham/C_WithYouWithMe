@@ -2,7 +2,7 @@
 
 int main() {
     int num1, num2;
-    int sum, diff, prod;
+    int sum, diff, prod, remainder;
     float quot;
 
     // Input 2 ints from the user
@@ -14,13 +14,16 @@ int main() {
     sum = num1 + num2;
     diff = num1 - num2;
     prod = num1 * num2;
+    // Type casting for accurate division
     quot = (float)num1 / num2;
+    remainder = num1 % num2;
 
     // Results
     printf("sum: %d\n", sum);
     printf("Difference: %d\n", diff);
     printf("Product: %d\n", prod);  
     printf("Quotient: %.2f\n", quot);
+    printf("Remainder via modulus: %d\n", remainder);
 
     return 0;
 }   
