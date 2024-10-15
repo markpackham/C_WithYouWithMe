@@ -1,9 +1,11 @@
 #include <stdio.h>
 
-int main(){
+int main()
+{
 
     printf("For Loop: prints the first 10 natural numbers\n");
-    for(int i=1; i<=10; i++){
+    for (int i = 1; i <= 10; i++)
+    {
         printf("%d\n", i);
     }
 
@@ -15,16 +17,18 @@ int main(){
     scanf("%d", &number);
 
     int n = 1;
-    while (n <= number){
-    factorial *= n;
-    n++;
+    while (n <= number)
+    {
+        factorial *= n;
+        n++;
     }
     printf("Factorial of %d is %llu\n", number, factorial);
 
     printf("Do Loop: keeps asking for numbers until the user enters a negative\n");
     int c;
 
-    do {
+    do
+    {
         printf("Enter a number: ");
         scanf("%d", &c);
     } while (c >= 0);
