@@ -28,7 +28,7 @@ int main()
     // https://www.tutorialspoint.com/c_standard_library/c_function_memset.htm
     memset(guessed, 0, sizeof(guessed));
 
-    int attempts = 6;
+    int attempts = 9;
     int correct = 0;
 
     printf("Welcome to Hangman!\n");
@@ -42,7 +42,7 @@ int main()
         printf("Enter a letter: ");
 
         char guess;
-        scanf("%c", &guess);
+        scanf(" %c", &guess);
 
         int found = 0;
         for (int i = 0; i < len; i++)
