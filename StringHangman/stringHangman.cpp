@@ -32,8 +32,45 @@ int main()
     int correct = 0;
 
     printf("Welcome to Hangman!\n");
-    while(attempts > 0 && correct < len){
+
+    // Check word loop
+    while (attempts > 0 && correct < len)
+    {
         display(word, guessed, len);
+
+        printf("Attempts remaining: %d\n", attempts);
+        printf("Enter a letter: ");
+
+        char guess;
+        scanf("%c", &guess);
+
+        int found = 0;
+        for (int i = 0; i < len; i++)
+        {
+            if (word[i] == guess)
+            {
+                if (!guessed[i])
+                {
+                    guessed[i] = 1;
+                    correct++;
+                }
+                found = 1;
+            }
+            if (!found)
+            {
+                attempts--;
+            }
+        }
+    }
+
+    // Game result
+    if (correct == len)
+    {
+        printf("Congrats you won! '%s' was the word\n", word);
+    }
+    else
+    {
+        printf("You lost, '%s' was the word\n", word);
     }
 
     return 0;
