@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Bubble Sort
 void bubbleSort(int array[], int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -16,6 +17,7 @@ void bubbleSort(int array[], int n)
     }
 }
 
+// Selection Sort
 void selectionSort(int array[], int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -31,6 +33,13 @@ void selectionSort(int array[], int n)
         int tmp = array[minIndex];
         array[minIndex] = array[i];
         array[i] = tmp;
+    }
+}
+
+void insertionSort(int array[], int n){
+    for(int i = 1; i < n; i++){
+        int key = array[i];
+        int j = i - 1;
     }
 }
 
