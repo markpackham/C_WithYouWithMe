@@ -18,6 +18,22 @@ int main() {
         switch(choice){
             case 1:
             printf("Enter an element to add: ");
+            scanf("%d", &element);
+            addElement(&array, &size, element);
+            break;
+            case 2:
+            printf("Add index of element to remove");
+            scanf("%d", &index);
+            removeElement(&array, &size, index);
+            break;
+            case 3:
+            printArray(array, size);
+            break;
+            case 4:
+            free(array);
+            return 0;
+            default:
+            printf("Invalid choice\n!\n");
         }
     }
 
