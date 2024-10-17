@@ -42,23 +42,22 @@ int main()
 
     while (1)
     {
-        printf("1. Add element\n");
-        printf("2. Remove element\n");
-        printf("3. Update element\n");
-        printf("4. Print elements\n");
-        printf("5. Exit\n");
+        printf("1. Add integer\n");
+        printf("2. Remove integer\n");
+        printf("3. Print integers list\n");
+        printf("4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice)
         {
         case 1:
-            printf("Enter an element to add: ");
+            printf("Enter an integer to add: ");
             scanf("%d", &element);
             addElement(&array, &size, element);
             break;
         case 2:
-            printf("Add index of element to remove: ");
+            printf("Add index of integer to remove: ");
             scanf("%d", &index);
             removeElement(&array, &size, index);
             break;
