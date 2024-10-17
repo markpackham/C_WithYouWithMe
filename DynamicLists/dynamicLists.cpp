@@ -1,12 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+void addElement(int **array, int *size, int element)
+{
+    *array = (int *)realloc(*array, (*size + 1) * sizeof(int));
+    (*array)[*size] = element;
+    (*size)++;
+}
+
+void removeElement(int **array, int *size, int index)
+{
+    if (index < 0 || index >= *size)
+    {
+        printf("Invalid index\n");
+        return;
+    }
+
+    for (int i = index; i < *size - 1; i++)
+    {
+        (*array)[i] = (*array)[i + 1];
+    }
+
+    *array = (int *)realloc(*array, (*size - 1) * sizeof(int));
+    (*size)--;
+}
+
+int main()
+{
     int *array = NULL;
     int size = 0;
     int choice, element, index;
 
-    while (1) {
+    while (1)
+    {
         printf("1. Add element\n");
         printf("2. Remove element\n");
         printf("3. Update element\n");
@@ -15,24 +41,25 @@ int main() {
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        switch(choice){
-            case 1:
+        switch (choice)
+        {
+        case 1:
             printf("Enter an element to add: ");
             scanf("%d", &element);
             addElement(&array, &size, element);
             break;
-            case 2:
+        case 2:
             printf("Add index of element to remove");
             scanf("%d", &index);
             removeElement(&array, &size, index);
             break;
-            case 3:
+        case 3:
             printArray(array, size);
             break;
-            case 4:
+        case 4:
             free(array);
             return 0;
-            default:
+        default:
             printf("Invalid choice\n!\n");
         }
     }
