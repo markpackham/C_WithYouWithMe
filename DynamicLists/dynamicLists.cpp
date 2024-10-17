@@ -12,7 +12,7 @@ void removeElement(int **array, int *size, int index)
 {
     if (index < 0 || index >= *size)
     {
-        printf("Invalid index\n");
+        printf("Invalid index!\n");
         return;
     }
 
@@ -23,6 +23,15 @@ void removeElement(int **array, int *size, int index)
 
     *array = (int *)realloc(*array, (*size - 1) * sizeof(int));
     (*size)--;
+}
+
+void printArray(int *array, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
 }
 
 int main()
@@ -49,7 +58,7 @@ int main()
             addElement(&array, &size, element);
             break;
         case 2:
-            printf("Add index of element to remove");
+            printf("Add index of element to remove: ");
             scanf("%d", &index);
             removeElement(&array, &size, index);
             break;
