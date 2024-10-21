@@ -8,7 +8,7 @@ typedef struct
     float gpa;
 } Student;
 
-void dispalyStudent(Student s)
+void displayStudent(Student s)
 {
     printf("Name: %s Age: %d Grade Point Average: %.2f\n", s.name, s.age, s.gpa);
 }
@@ -30,11 +30,17 @@ void updateStudent(Student *s, char *name, int age, float gpa)
 
 void deleteStudent(Student students[], int *count, int index)
 {
-    if(index < 0 || index >= *count){
+    if (index < 0 || index >= *count)
+    {
         printf("Invalid index\n");
         return;
     }
 
+    for (int i = index; i < *count - 1; i++)
+    {
+        students[i] = students[i + 1];
+    }
+    (*count)--;
 }
 
 int main()
@@ -48,18 +54,18 @@ int main()
     printf("Students:\n");
     for (int i = 0; i < count; i++)
     {
-        dispalyStudent(students[i]);
+        displayStudent(students[i]);
     }
 
     updateStudent(&students[0], "John Smith", 21, 4.5);
     deleteStudent(students, &count, 1);
 
-    printf("\n-------");
+    printf("-------");
     printf("\nUpdated Students:\n");
-    printf("\n-------");
+    printf("-------\n");
     for (int i = 0; i < count; i++)
     {
-        dispalyStudent(students[i]);
+        displayStudent(students[i]);
     }
 
     return 0;
