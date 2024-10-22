@@ -40,15 +40,26 @@ void writeFile(const char *filename)
         return;
     }
     char text[256];
-    printf("Enter text to write to file, hit Return/Enter (type 'END' and Return/Enter again to finish):\n");
+    printf("Enter text to write to file (hit Enter, type 'END' then Enter again to finish):\n");
     while (1)
     {
-        fgets(text, sizeof(text), stdin);
-        if (strncmp(text, "END", 3) == 0)
+        if (fgets(text, sizeof(text), stdin) == NULL)
+        {
+            printf("Error reading input\n");
+            break;
+        }
+
+        // Remove trailing newline character
+        text[strcspn(text, "\n")] = 0;
+
+        if (strcmp(text, "END") == 0)
         {
             break;
         }
+
         fputs(text, fptr);
+        // Add newline back after writing text to file
+        fputs("\n", fptr);
     }
     fclose(fptr);
 }
@@ -66,7 +77,7 @@ int main()
 
     while (1)
     {
-        printf("Enter your choice: ");
+        printf("\nEnter your choice: ");
         scanf("%d", &choice);
         // Clear newline char from buffer
         // getchar() function reads the next character from the standard input(stdin) and returns it as an unsigned char cast to an int
