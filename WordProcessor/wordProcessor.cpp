@@ -2,6 +2,35 @@
 #include <stdlib.h>
 #include <string.h>
 
+void createFile(const char *filename)
+{
+    FILE *fptr = fopen(filename, "w");
+    if (fptr == NULL)
+    {
+        printf("Error creating file\n");
+        return;
+    }
+    printf("File %s created successfully\n", filename);
+    fclose(fptr);
+}
+
+void readFile(const char *filename)
+{
+    FILE *fptr = fopen(filename, "r");
+    if (fptr == NULL)
+    {
+        printf("Error opening file\n");
+        return;
+    }
+    char ch;
+    while ((ch = fgetc(fptr)) != EOF)
+    {
+        // write a single character to the standard output eg terminal
+        putchar(ch);
+    }
+    fclose(fptr);
+}
+
 int main()
 {
     char filename[100];
