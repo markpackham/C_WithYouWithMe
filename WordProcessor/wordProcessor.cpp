@@ -40,7 +40,7 @@ void writeFile(const char *filename)
         return;
     }
     char text[256];
-    printf("Enter text to write to file (type 'END' to finish):\n");
+    printf("Enter text to write to file, hit Return/Enter (type 'END' and Return/Enter again to finish):\n");
     while (1)
     {
         fgets(text, sizeof(text), stdin);
@@ -76,21 +76,20 @@ int main()
         {
         case 1:
             printf("Enter filename to create: ");
-            scanf("%d", &filename);
+            scanf("%s", filename);
             getchar();
             createFile(filename);
             break;
-
         case 2:
             printf("Enter filename to read: ");
-            scanf("%d", &filename);
+            scanf("%s", filename);
             getchar();
             readFile(filename);
             break;
-
         case 3:
             printf("Enter filename to write to: ");
-            scanf("%d", &filename);
+            scanf("%s", filename);
+            getchar();
             writeFile(filename);
             break;
         case 4:
