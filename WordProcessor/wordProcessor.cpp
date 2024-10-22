@@ -94,7 +94,6 @@ int main()
         case 2:
             printf("Enter filename to read: ");
             scanf("%s", filename);
-            getchar();
             readFile(filename);
             break;
         case 3:
