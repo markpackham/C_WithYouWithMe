@@ -41,21 +41,15 @@ void writeFile(const char *filename)
     }
     char text[256];
     printf("Enter text to write to file (type 'END' to finish):\n");
-
     while (1)
     {
         fgets(text, sizeof(text), stdin);
-        while (1)
+        if (strncmp(text, "END", 3) == 0)
         {
-            fgets(text, sizeof(text), stdin);
-            if (strcmp(text, "END", 3) == 0)
-            {
-                break;
-            }
-            fputs(text, fptr);
+            break;
         }
+        fputs(text, fptr);
     }
-
     fclose(fptr);
 }
 
