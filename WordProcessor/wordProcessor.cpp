@@ -10,7 +10,7 @@ void createFile(const char *filename)
         printf("Error creating file\n");
         return;
     }
-    printf("File %s created successfully\n", filename);
+    printf("File %s created successfully.\n", filename);
     fclose(fptr);
 }
 
@@ -31,6 +31,34 @@ void readFile(const char *filename)
     fclose(fptr);
 }
 
+void writeFile(const char *filename)
+{
+    FILE *fptr = fopen(filename, "a");
+    if (fptr == NULL)
+    {
+        printf("Error opening file\n");
+        return;
+    }
+    char text[256];
+    printf("Enter text to write to file (type 'END' to finish):\n");
+
+    while (1)
+    {
+        fgets(text, sizeof(text), stdin);
+        while (1)
+        {
+            fgets(text, sizeof(text), stdin);
+            if (strcmp(text, "END", 3) == 0)
+            {
+                break;
+            }
+            fputs(text, fptr);
+        }
+    }
+
+    fclose(fptr);
+}
+
 int main()
 {
     char filename[100];
@@ -43,13 +71,13 @@ int main()
     printf("4. Exit\n");
 
     while (1)
-        printf("Enter your choice: ");
-    scanf("%d", &choice);
-    // Clear newline char from buffer
-    // getchar() function reads the next character from the standard input(stdin) and returns it as an unsigned char cast to an int
-    getchar();
-
     {
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        // Clear newline char from buffer
+        // getchar() function reads the next character from the standard input(stdin) and returns it as an unsigned char cast to an int
+        getchar();
+
         switch (choice)
         {
         case 1:
